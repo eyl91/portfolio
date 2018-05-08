@@ -4,13 +4,14 @@ import Home from "./pages/Home";
 import Portfolio from "./pages/Portfolio";
 import Contact from "./pages/Contact";
 import Nav from "./components/Nav";
+import Photo from "./components/Photo";
 
 
 
 const App = () => (
     <Router>
         <div>
-            <Nav />
+            <Photo />
             <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/portfolio" component={Portfolio} />
