@@ -1,46 +1,56 @@
 import React from "react";
-import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import Bio from "./../../components/Bio";
+import ProjectCards from "./../../components/ProjectCards"
 import "./Nav.css"
 
+class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { 
+      aboutClicked: false,
+      portfolioClicked: false
+    };
+  }
 
-
-class NavBar extends React.Component {
-
-
+  
 
   render() {
+    const aboutClicked = (component) => {
+      if (this.state.aboutClicked) {
+        if (this.state.portfolioClicked && this.state.portfolioClicked){
+          this.setState({ portfolioClicked: false });
+        }
+        return component;
+      }
+    }
+
+    const portfolioClicked = (component) => {
+      if (this.state.portfolioClicked) {
+        if (this.state.portfolioClicked && this.state.aboutClicked){
+          this.setState({ aboutClicked: false });
+        }
+        return component;
+      }
+    }
     return (
-      <Navbar>
-        <Navbar.Header>
-          <div>
-            <Link to="/">
-              <img className="style__logo___p5nsH" src={require("../../utils/logo.png")} alt="logo"/>
-            </Link>
-          </div>
-        </Navbar.Header>
-        <Nav pullRight>
-          <NavItem eventKey={1} href="/portfolio">
-            Portfolio
-          </NavItem>
-          {/* <NavItem eventKey={2} href="#">
-            Link
-          </NavItem> */}
-          <NavDropdown eventKey={3} title="More" id="basic-nav-dropdown">
-            <MenuItem eventKey={3.1}><a href="https://www.linkedin.com/in/elmagonzalez/">LinkedIn</a></MenuItem>
-            
-            <MenuItem eventKey={3.2}><a href="https://github.com/eyl91">Github</a></MenuItem>
-            <MenuItem eventKey={3.3}><a href="http://www.kpbs.org/staff/elma-gonzalez/">KPBS</a></MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={3.4}><Link to="/contact">Contact Me</Link></MenuItem>
-          </NavDropdown>
-        </Nav>
-      </Navbar>
+      <div>
+        <div className="nav-text"><span className="hover" onClick={() => this.setState({ aboutClicked: !this.state.aboutClicked })}>About</span> | 
+          <span className="hover" onClick={() => this.setState({ portfolioClicked: !this.state.portfolioClicked })}>Portfolio</span> |
+          <span><a href="https://twitter.com/elmayedda"><i className="hover fab fa-twitter"></i></a> <a href="https://www.linkedin.com/in/elmagonzalez/"> <i className="hover fab fa-linkedin-in"></i></a> <a href="https://github.com/eyl91"><i className="hover fab fa-github"></i></a> <a href="mailto:elmayl91@gmail.com"><i className="hover fas fa-envelope"></i></a> </span> 
+          <br />
+        </div>
+        <br />
+          {aboutClicked(<Bio />)}
+          {portfolioClicked(<ProjectCards />)}
+      </div>
+
     )
   }
 }
 
-export default NavBar;
+export default Nav;
+
+
 
 
 

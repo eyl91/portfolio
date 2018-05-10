@@ -1,0 +1,22 @@
+body {
+    background-color: #D1F2EB;
+}
+
+.text {
+    font-size: 3em !important;
+    font-family: 'Quicksand',
+    sans-serif;
+    color: #48C9B0;
+    
+}
+
+.sub-head {
+    font-size: 1.2em !important;
+    color: #48C9B0;
+}
+
+.image {
+    margin-top: 10%;
+}
+
+

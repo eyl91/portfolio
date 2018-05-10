@@ -1,21 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
-import Portfolio from "./pages/Portfolio";
-import Contact from "./pages/Contact";
-import Nav from "./components/Nav";
-import Photo from "./components/Photo";
-
-
+import Err from "./pages/Err";
 
 const App = () => (
     <Router>
         <div>
-            <Photo />
             <Switch>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/portfolio" component={Portfolio} />
-                <Route exact path="/contact" component={Contact} />
+                <Route component={Err} />
             </Switch>
         </div>
     </Router>
